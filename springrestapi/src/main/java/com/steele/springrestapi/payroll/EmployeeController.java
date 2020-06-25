@@ -1,7 +1,10 @@
 package com.steele.springrestapi.payroll;
 
 import java.util.List;
+import java.util.stream.Collectors;
 
+import org.springframework.hateoas.CollectionModel;
+import org.springframework.hateoas.EntityModel;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -20,11 +23,11 @@ class EmployeeController {
   }
 
   // Aggregate root
-
-  @GetMapping("/employees")
-  List<Employee> all() {
-    return repository.findAll();
-  }
+  
+  //@GetMapping("/employees")
+  //List<Employee> all() {
+   // return repository.findAll();
+  //}
 
   @PostMapping("/employees")
   Employee newEmployee(@RequestBody Employee newEmployee) {
@@ -49,7 +52,7 @@ class EmployeeController {
         linkTo(methodOn(EmployeeController.class).one(id)).withSelfRel(),
         linkTo(methodOn(EmployeeController.class).all()).withRel("employees"));
   }
-
+ 
   @PutMapping("/employees/{id}")
   Employee replaceEmployee(@RequestBody Employee newEmployee, @PathVariable Long id) {
 
