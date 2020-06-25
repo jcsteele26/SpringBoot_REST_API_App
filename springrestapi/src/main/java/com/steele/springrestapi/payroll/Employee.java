@@ -9,11 +9,11 @@ import javax.persistence.Id;
 @Entity  //Make object ready for storage in JPA database
 class Employee {
 
-  private @Id @GeneratedValue Long id;
+  private @Id @GeneratedValue Long id; //Primary key
   private String name;
   private String role;
 
-  Employee() {}
+  Employee() {} //Empty constructor for JPA
 
   Employee(String name, String role) {
 
